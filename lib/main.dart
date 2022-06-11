@@ -32,7 +32,7 @@ class MyApp extends StatelessWidget {
 
 void callDatabase() {
     DatabaseReference starCountRef = 
-    FirebaseDatabase.instance.ref('Registros/2345610');
+    FirebaseDatabase.instance.ref('Registros');
     starCountRef.onValue.listen((event){
     final data = event.snapshot.value;
     print(data.toString());
