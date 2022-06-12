@@ -8,7 +8,7 @@ class Carro {
 
   factory Carro.fromJson(Map<String, dynamic> json) {
     return Carro(
-      color: json['color'],
+      color: json['Color'],
       marca: json['marca'],
       modelo: json['modelo'],
       placa: json['placa'],
@@ -23,5 +23,10 @@ class Carro {
     data['placa'] = this.placa;
     return data;
   } */
+
+  @override
+  String toString() {
+    return 'Carro \ncolor: $color, marca: $marca, modelo: $modelo, placa: $placa';
+  }
 
 }

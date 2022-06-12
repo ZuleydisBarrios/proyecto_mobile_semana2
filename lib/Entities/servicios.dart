@@ -12,4 +12,9 @@ class Servicio {
       tapiceria: json['tapiceria'],
     );
   }
+
+  @override
+  String toString() {
+    return 'Servicios \nlavado: $lavado, polish: $polish, tapiceria: $tapiceria';
+  }
 }

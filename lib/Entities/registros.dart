@@ -24,11 +24,12 @@ class Registros {
     this.image});
 
 
+// registros = json.map((json['Carro']) => Registros.fromJson(Map<String, dynamic>.from(json['Carro'] as Map))).toList();
 factory Registros.fromJson(Map<String, dynamic> json) {
     return Registros(
-      carro: json['carro'] != null ? Carro.fromJson(json['carro']) : null,
-      servicio: json['servicio'] != null 
-      ? Servicio.fromJson(json['servicio']) 
+      carro: json['Carro'] != null ? Carro.fromJson(Map<String, dynamic>.from(json['Carro'] as Map)) : null,
+      servicio: json['Servicio'] != null 
+      ? Servicio.fromJson(Map<String, dynamic>.from(json['Servicio'] as Map)) 
       : null,
       apellido: json['apellido'],
       cel: json['cel'],
@@ -37,5 +38,4 @@ factory Registros.fromJson(Map<String, dynamic> json) {
       image: json['image'],
     );
   }
-
 }

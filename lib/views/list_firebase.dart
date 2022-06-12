@@ -1,32 +1,83 @@
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_application_2/domain/firebase_connection.dart';
 
-class ListFirebase extends StatelessWidget {
+import '../Entities/registros.dart';
+import '../Entities/response_firebase.dart';
+
+class ListFirebase extends StatefulWidget {
   const ListFirebase({Key? key}) : super(key: key);
 
   @override
+  State<ListFirebase> createState() => _ListFirebaseState();
+}
+
+class _ListFirebaseState extends State<ListFirebase> {
+  final connection = new FirebaseConnection();
+
+  List<Registros> lista_registros = [];
+
+  @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Material App',
-      home: Scaffold(
+    callDatabase();
+    return Scaffold(
         appBar: AppBar(
-          title: Text('Material App Bar'),
+          title: const Text("Marcas de Carro"),
         ),
-        body: Center(
-          child: Container(
-            child: Text('Hello World'),
-          ),
-        ),
-      ),
-    );
+        body: ListView.builder(
+            itemCount: lista_registros.length,
+            itemBuilder: (context, index) {
+              return ListTile(
+                leading: CircleAvatar(
+                  backgroundImage:
+                      Image.network(lista_registros[index].image!).image,
+                ),
+                title: Text(lista_registros[index].nombre! +
+                    " " +
+                    lista_registros[index].apellido!),
+                onTap: () => showDialog<String>(
+                  context: context,
+                  builder: (BuildContext context) => AlertDialog(
+                    title: Text((lista_registros[index].nombre! +
+                        " "+ lista_registros[index].apellido!).toUpperCase() ),                    
+                    content: Column(
+                      children: [
+                        
+                        CircleAvatar(
+                            backgroundImage:
+                                Image.network(lista_registros[index].image!)
+                                    .image,
+                          ),
+
+                        Text('Celular ${lista_registros[index].cel}'
+                            +"\n\n" +lista_registros[index].carro!.toString()
+                            +"\n\n" + lista_registros[index].servicio!.toString()
+                            ),
+                      ],
+                    ),
+                        
+                    actions: <Widget>[
+                      TextButton(
+                        onPressed: () => Navigator.pop(context, 'Cancel'),
+                        child: const Text('Cancel'),
+                      ),
+                      TextButton(
+                        onPressed: () => Navigator.pop(context, 'OK'),
+                        child: const Text('OK'),
+                      ),
+                    ],
+                  ),
+                ),
+              );
+            }));
   }
 
-//Crear metodo para obtener los datos de la base de datos
-void callDatabase() {
-  final reg = FirebaseDatabase.instance.ref();
-  final obj = reg.child('/Registros/2345610').get();
-  print(obj);
-
+  void callDatabase() async {
+    final response = await connection.getRegisters();
+    if (lista_registros.length == 0) {
+      setState(() {
+        lista_registros = response.registros!;
+      });
+    }
   }
-
 }

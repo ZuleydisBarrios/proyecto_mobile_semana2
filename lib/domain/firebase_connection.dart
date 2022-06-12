@@ -30,10 +30,15 @@ class FirebaseConnection {
 
   Future<ResponseFirebase>getRegisters() async {
     try{
-      DatabaseReference  _registerRef = instanceFirebase();
+      DatabaseReference _registerRef = instanceFirebase();
       DataSnapshot response = await _registerRef.get();
-      final registers = ResponseFirebase.fromJson(response.value as List);
+      final map = Map<String, dynamic>.from(response.value as Map);
+      //print(response.value);
+
+      //print(map.values.toList());
+      final registers = ResponseFirebase.fromJson(map.values.toList());
       return registers;
+     
     }
     catch(e){
       rethrow;

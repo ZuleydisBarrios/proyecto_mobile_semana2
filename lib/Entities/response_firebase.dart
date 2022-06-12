@@ -1,8 +1,11 @@
+import 'package:flutter_application_2/Entities/carro.dart';
 import 'package:flutter_application_2/Entities/registros.dart';
+import 'package:flutter_application_2/Entities/servicios.dart';
 
 class ResponseFirebase{
 
   List<Registros>? registros;
+
 
   ResponseFirebase({this.registros});
 
@@ -18,7 +21,13 @@ class ResponseFirebase{
   } */
 
   ResponseFirebase.fromJson(List<dynamic> json){
-    registros = json.map((e) => Registros.fromJson(e)).toList();
+    //print(json);
+    // final map = Map<String, dynamic>.from(json as Map);
+    // final servicios = ResponseFirebase.fromJson(map.values.toList());
+    
+    registros = json.map((e) => Registros.fromJson(Map<String, dynamic>.from(e as Map))).toList();
+    
   }
-  
 }
+
+
