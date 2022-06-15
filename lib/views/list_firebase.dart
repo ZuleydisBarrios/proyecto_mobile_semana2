@@ -22,7 +22,7 @@ class _ListFirebaseState extends State<ListFirebase> {
     callDatabase();
     return Scaffold(
         appBar: AppBar(
-          title: const Text("Marcas de Carro"),
+          title: const Text("Mis Contactos"),
         ),
         body: ListView.builder(
             itemCount: lista_registros.length,
@@ -41,15 +41,16 @@ class _ListFirebaseState extends State<ListFirebase> {
                     title: Text((lista_registros[index].nombre! +
                         " "+ lista_registros[index].apellido!).toUpperCase() ),                    
                     content: Column(
+                      mainAxisSize: MainAxisSize.min,
                       children: [
                         
                         CircleAvatar(
                             backgroundImage:
                                 Image.network(lista_registros[index].image!)
                                     .image,
-                          ),
+                          ),                          
 
-                        Text('Celular ${lista_registros[index].cel}'
+                        Text('\nCelular ${lista_registros[index].cel}'
                             +"\n\n" +lista_registros[index].carro!.toString()
                             +"\n\n" + lista_registros[index].servicio!.toString()
                             ),
@@ -76,7 +77,7 @@ class _ListFirebaseState extends State<ListFirebase> {
     final response = await connection.getRegisters();
     if (lista_registros.length == 0) {
       setState(() {
-        lista_registros = response.registros!;
+        lista_registros = response.registros!;  
       });
     }
   }
