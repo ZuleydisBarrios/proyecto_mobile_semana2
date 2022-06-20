@@ -1,8 +1,6 @@
-import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_application_2/Entities/registros.dart';
 import 'package:flutter_application_2/domain/firebase_connection.dart';
-
-import '../Entities/registros.dart';
 import '../Entities/response_firebase.dart';
 
 class ListFirebase extends StatefulWidget {
@@ -20,10 +18,7 @@ class _ListFirebaseState extends State<ListFirebase> {
   @override
   Widget build(BuildContext context) {
     callDatabase();
-    return Scaffold(
-        appBar: AppBar(
-          title: const Text("Mis Contactos"),
-        ),
+    return Scaffold(       
         body: ListView.builder(
             itemCount: lista_registros.length,
             itemBuilder: (context, index) {

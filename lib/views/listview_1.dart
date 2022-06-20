@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class ListView1 extends StatelessWidget {
-  ListView1({Key? key}) : super(key: key);
+class ListView1C extends StatelessWidget {
+  ListView1C({Key? key}) : super(key: key);
 
   final List<Map<String, dynamic>>_cars=[
       {
