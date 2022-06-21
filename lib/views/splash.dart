@@ -39,7 +39,7 @@ class Home extends State<Splash> {
                 child: Lottie.asset('assets/animaciones/108681-spaceman.json')),
             const SizedBox(height: 20),
             const Text(
-              "CarWash",
+              "Videogames ZZ",
               style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
             ),
           ],

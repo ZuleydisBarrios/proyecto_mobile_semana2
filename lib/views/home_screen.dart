@@ -119,77 +119,87 @@ class HomeScreen extends StatelessWidget {
                       return CategoryCard(categoryModel: listCards[index],);
                     }),
               ),
-                 Text('The most popular'),
-              Container(
-                 margin: EdgeInsets.symmetric(vertical: 15),
-                decoration: BoxDecoration(
-                    color: Colors.grey.shade100,
-                    borderRadius: BorderRadius.circular(10),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.grey.shade300,
-                        spreadRadius: 5,
-                        blurRadius: 5,
-                      )
-                    ]),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Container(
+                 Text('The videogames most popular',
+                  style: Theme.of(context)
+                      .textTheme
+                      .subtitle1!
+                      .copyWith(color: Color.fromARGB(255, 9, 2, 25))
+                 ),
+                for (int i= 0; i<bannerList.length; i++)...{
+                    Container(
+                  margin: EdgeInsets.symmetric(vertical: 15),
+                  decoration: BoxDecoration(
+                      color: Colors.grey.shade100,
+                      borderRadius: BorderRadius.circular(10),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.grey.shade300,
+                          spreadRadius: 5,
+                          blurRadius: 5,
+                        )
+                      ]),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Container(
                           height: 220,
                           margin: EdgeInsets.only(bottom: 5),
                           decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
-                          image: DecorationImage(image:NetworkImage(bannerList[0]),
-                          
-                          fit: BoxFit.cover
+                            borderRadius: BorderRadius.circular(10),
+                            image: DecorationImage(
+                                image: NetworkImage(bannerList[i]),
+                                fit: BoxFit.cover),
                           ),
-                          
+                          //child: Image.network(bannerList[0]
+                          //)//
                         ),
-                        //child: Image.network(bannerList[0]
-                        //)//
-                        ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Text("Top games",
-                          style: Theme.of(context)
-                              .textTheme
-                              .headline6!
-                              .copyWith(color: Colors.black)),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Row(
-                        children: [
-                        Icon(Icons.star, color: Colors.deepOrange),
-                        Text('4.5',
-                            style: Theme.of(context)
-                                .textTheme
-                                .subtitle1!
-                                .copyWith(color: Colors.deepOrange)),
-                        Text('  (128 ratings)',
-                            style: Theme.of(context)
-                                .textTheme
-                                .subtitle1!
-                                .copyWith(color: Colors.black45)),
-                                Spacer(),
-                        Text('Videogame Lostark',
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .subtitle1!
-                                  .copyWith(color: Colors.black45,
-                                  fontWeight: FontWeight.bold)),
-                        
-
-                        ],
                       ),
-                    )
-                  ],
-                ),
-              )
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Text("Top games",
+                            style: Theme.of(context)
+                                .textTheme
+                                .headline6!
+                                .copyWith(color: Colors.black)),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Row(
+                          children: [
+                            Icon(Icons.star, color: Colors.deepOrange),
+                            Text('4.5',
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .subtitle1!
+                                    .copyWith(color: Colors.deepOrange)),
+                            Text('  (128 ratings)',
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .subtitle1!
+                                    .copyWith(color: Colors.black45)),
+                            Spacer(),
+                             Column(
+                               children: [
+                                 Text('Disponible en:',
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .bodySmall!
+                                        .copyWith(color: Colors.black45)),
+                                Image.asset('assets/videojuegos/logoplaystore.png',
+                                height: 25,
+                                width: 25,)
+                               ],
+                             ),
+                            
+                          ],
+                        ),
+                      )
+                    ],
+                  ),
+                )
+                }
             ]),
           ),
         ));
@@ -212,7 +222,7 @@ class CategoryCard extends StatelessWidget {
             height: 70,
             width: 70,
             decoration: BoxDecoration(        
-              color: Color.fromARGB(255, 98, 200, 241).withOpacity(0.2),
+              color: Color.fromARGB(255, 160, 219, 250).withOpacity(0.2),
               borderRadius: BorderRadius.circular(15),
            ),
             child: Image.asset(
@@ -237,7 +247,7 @@ class CategoryModel{
 List<CategoryModel> listCards = [
   CategoryModel(
     'assets/videojuegos/diosdelaguerra.jpg',
-    'Dios Guera',),
+    'Dios Guerra',),
   CategoryModel(
     'assets/videojuegos/lol.jpg',
     'LOL',),

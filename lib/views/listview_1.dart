@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class ListView1C extends StatelessWidget {
   ListView1C({Key? key}) : super(key: key);
 
-  final List<Map<String, dynamic>> _cars = [
+  final List<Map<String, dynamic>> _cars = const [
     {
       "image":
           "https://upload.wikimedia.org/wikipedia/commons/6/69/Scuderia_Ferrari_%28cropped%29.png",
@@ -49,6 +49,17 @@ class ListView1C extends StatelessWidget {
     }
   ];
 
+   void openAlertDialog(BuildContext context, String info) {
+    AlertDialog alert =
+        AlertDialog(title: Text(info), content: Text(info), actions: [
+      TextButton(
+        onPressed: () => Navigator.pop(context),
+        child: const Text('OK'),
+      )
+    ]);
+    showDialog(context: context, builder: (BuildContext context) => alert);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -58,63 +69,55 @@ class ListView1C extends StatelessWidget {
     );
   }
 
-  Widget _createList() {
+    Widget _createList() {
     return ListView.builder(
       itemCount: _cars.length,
       itemBuilder: (BuildContext context, int index) {
-        return CustomCard(_cars[index]);
+        return GestureDetector(
+          onTap: () {
+            openAlertDialog(context, _cars[index]['name']);
+          },
+          child: CustomCard(_cars[index]["name"], _cars[index]["image"]),
+        );
       },
     );
   }
 }
 
 class CustomCard extends StatelessWidget {
-  CustomCard(Map<String, dynamic> _cars, {Key? key}) : super(key: key);
-  
-  @override
-  Widget build(
-    BuildContext context,
-  ) {
+  final String name;
+  final String image;
+  const CustomCard(this.name, this.image, {Key? key}) : super(key: key);  
+
+ @override
+  Widget build(BuildContext context) {
     return Center(
       child: Card(
         elevation: 2,
-        color: Color.fromARGB(232, 229, 240, 255),
+        color: Color.fromARGB(232, 218, 232, 251),
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.all(Radius.circular(20)),
+          borderRadius: BorderRadius.all(Radius.circular(10)),
         ),
         child: SizedBox(
-          height: 120,
+          height: 60,
           width: 360,
-          child: Center(
-              child: Row(
-            children: [
-              Stack(
-                children: const [
-                  Icon(
-                  Icons.circle_rounded,
-                  color: Color.fromARGB(255, 251, 223, 223),
-                  size: 50,
+          child: Container(
+            child: Row(
+              children: <Widget>[
+                Padding(padding: const EdgeInsets.only(left: 5)),
+                CircleAvatar(
+                  backgroundImage: NetworkImage(image),
                 ),
-               
-                  ]
-              ),
-            ],
-            
-          )),
+                Padding(padding: const EdgeInsets.all(5)),
+                Text(
+                  name,
+                  style: const TextStyle(fontSize: 20),
+                ),
+              ],
+            ),
+          ),
         ),
       ),
     );
   }
-  
-  Widget _cardHeader(_cars) {
-    return Container(
-      height: 120,
-      width: 120,
-      child: Image.network(
-        _cars["image"],
-        fit: BoxFit.cover,
-      ),
-    );
-  }
-
 }
