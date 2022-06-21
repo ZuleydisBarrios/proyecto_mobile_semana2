@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_2/views/home_screen.dart';
 import 'package:flutter_application_2/views/list_firebase.dart';
+import 'package:flutter_application_2/views/listview_1.dart';
 import 'package:flutter_application_2/views/profile.dart';
 
 
@@ -17,10 +19,10 @@ class _MenuState extends State<Menu> {
   TextStyle(fontSize: 24, 
   fontWeight: FontWeight.bold);
   static List<Widget> _widgetOptions = <Widget>[
-    Text('Index 0: Home', style: optionStyle),
+    HomeScreen(),
     ListFirebase(),
     MyProfile(),
-    Text('Index 3: Settings', style: optionStyle),
+    ListView1C(),
   ];
 
   void _onItemTapped(int index) {
@@ -33,7 +35,9 @@ class _MenuState extends State<Menu> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Aplication Mobile'),
+        backgroundColor: Colors.transparent,
+        elevation: 0.0,
+        title: const Text('Aplication Mobile', style: TextStyle(color: Colors.blue),),
       ),
       body: Center(
         child: _widgetOptions.elementAt(_selectedIndex),
