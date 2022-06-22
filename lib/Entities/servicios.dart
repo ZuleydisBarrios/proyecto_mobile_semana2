@@ -15,6 +15,6 @@ class Servicio {
 
   @override
   String toString() {
-    return '- Lavado:   $lavado, \n- Polish: $polish, \n- Tapiceria:  $tapiceria';
+    return 'Detalle de Servicio\n- Lavado:   $lavado, \n- Polish: $polish, \n- Tapiceria:  $tapiceria';
   }
 }

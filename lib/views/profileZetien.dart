@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_2/views/home_screen.dart';
+import 'package:flutter_application_2/views/menu.dart';
 import 'package:flutter_vector_icons/flutter_vector_icons.dart';
 
 class ProfileScreen extends StatelessWidget {
@@ -34,14 +36,17 @@ class ProfileScreen extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Icon(
-                        AntDesign.arrowleft,
-                        color: Colors.white,
-                      ),
-                      Icon(
-                        AntDesign.logout,
-                        color: Colors.white,
-                      ),
+                      TextButton(
+                          onPressed: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (content) => Menu()));
+                          },
+                          child: Icon(
+                            AntDesign.arrowleft,
+                            color: Colors.white,
+                          )),
                     ],
                   ),
                   SizedBox(

@@ -37,7 +37,7 @@ class _MenuState extends State<Menu> {
         elevation: 0.0,
         title: const Text(
           'Videogames ZZ',
-          style: TextStyle(color: Colors.blue),
+          style: TextStyle(color: Color.fromARGB(255, 3, 39, 146)),
         ),
       ),
       body: Center(
