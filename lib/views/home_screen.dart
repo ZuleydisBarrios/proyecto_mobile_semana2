@@ -119,13 +119,13 @@ class HomeScreen extends StatelessWidget {
                       return CategoryCard(categoryModel: listCards[index],);
                     }),
               ),
-                
+                SizedBox(height:20),
                  Text('The videogames most popular',
                  textAlign: TextAlign.center,
                  style: Theme.of(context)
                       .textTheme
-                      .headline5!
-                      .copyWith(color: Color.fromARGB(255, 9, 2, 25))
+                      .headline6!
+                      .copyWith(color: Color.fromARGB(255, 8, 6, 10))
                  ),
                 for (int i= 0; i<bannerList.length; i++)...{
                     Container(

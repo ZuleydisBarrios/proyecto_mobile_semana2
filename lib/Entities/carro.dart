@@ -26,7 +26,7 @@ class Carro {
 
   @override
   String toString() {
-    return 'Carro \ncolor: $color, \nmarca: $marca, \nmodelo: $modelo, \nplaca: $placa';
+    return '- Color: $color, \n- Marca: $marca, \n- Modelo: $modelo, \n- Placa: $placa';
   }
 
 }

@@ -53,17 +53,17 @@ class _MenuState extends State<Menu> {
           BottomNavigationBarItem(
             icon: Icon(Icons.business),
             label: 'Service',
-            backgroundColor: Color.fromARGB(255, 3, 92, 6),
+            backgroundColor: Color.fromARGB(255, 30, 2, 114),
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.school),
             label: 'Profile: Zuly',
-            backgroundColor: Color.fromARGB(210, 9, 95, 194),
+            backgroundColor: Color.fromARGB(210, 9, 9, 190),
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.badge),
             label: 'Profile: Zetien',
-            backgroundColor: Color.fromARGB(255, 76, 51, 187),
+            backgroundColor: Color.fromARGB(255, 61, 34, 183),
           ),
         ],
         currentIndex: _selectedIndex,
