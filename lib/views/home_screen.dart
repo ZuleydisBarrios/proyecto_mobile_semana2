@@ -32,7 +32,7 @@ class HomeScreen extends StatelessWidget {
                 },
                 child: Row(mainAxisSize: MainAxisSize.min, children: [
                   Text(
-                    'Current game',
+                    'Select game',
                     style: Theme.of(context)
                         .textTheme
                         .headline6!
@@ -119,10 +119,12 @@ class HomeScreen extends StatelessWidget {
                       return CategoryCard(categoryModel: listCards[index],);
                     }),
               ),
+                
                  Text('The videogames most popular',
-                  style: Theme.of(context)
+                 textAlign: TextAlign.center,
+                 style: Theme.of(context)
                       .textTheme
-                      .subtitle1!
+                      .headline5!
                       .copyWith(color: Color.fromARGB(255, 9, 2, 25))
                  ),
                 for (int i= 0; i<bannerList.length; i++)...{
@@ -182,7 +184,7 @@ class HomeScreen extends StatelessWidget {
                             Spacer(),
                              Column(
                                children: [
-                                 Text('Disponible en:',
+                                 Text('avaliable on:',
                                     style: Theme.of(context)
                                         .textTheme
                                         .bodySmall!
@@ -247,19 +249,19 @@ class CategoryModel{
 List<CategoryModel> listCards = [
   CategoryModel(
     'assets/videojuegos/diosdelaguerra.jpg',
-    'Dios Guerra',),
+    'Action',),
   CategoryModel(
     'assets/videojuegos/lol.jpg',
-    'LOL',),
+    'MMORPG',),
   CategoryModel(
     'assets/videojuegos/gta.jpg',
-    'GTA',),
+    'Racing',),
   CategoryModel(
     'assets/videojuegos/horizont.jpeg',
-    'Horizont',),
+    'Adventure',),
   CategoryModel(
     'assets/videojuegos/callofdutty.jpeg',
-    'Call Dutty',),
+    'FPS',),
 
 ];
 
