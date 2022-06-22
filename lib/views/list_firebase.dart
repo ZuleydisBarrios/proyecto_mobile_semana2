@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+/* import 'package:flutter/material.dart';
 import 'package:flutter_application_2/Entities/registros.dart';
 import 'package:flutter_application_2/domain/firebase_connection.dart';
 import '../Entities/response_firebase.dart';
@@ -77,3 +77,4 @@ class _ListFirebaseState extends State<ListFirebase> {
     }
   }
 }
+ */

@@ -1,123 +1,154 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_2/Entities/registros.dart';
+import 'package:flutter_application_2/domain/firebase_connection.dart';
+import '../Entities/response_firebase.dart';
 
-class ListView1C extends StatelessWidget {
-  ListView1C({Key? key}) : super(key: key);
+class ListFirebase extends StatefulWidget {
+  const ListFirebase({Key? key}) : super(key: key);
 
-  final List<Map<String, dynamic>> _cars = const [
-    {
-      "image":
-          "https://upload.wikimedia.org/wikipedia/commons/6/69/Scuderia_Ferrari_%28cropped%29.png",
-      "name": "Ferrari"
-    },
-    {
-      "image":
-          "https://www.autonocion.com/wp-content/uploads/2021/11/Logo-de-mercedes-6-501x500.jpg",
-      "name": "Mercedes Benz"
-    },
-    {
-      "image":
-          "https://i.pinimg.com/736x/e0/93/4d/e0934d5ff4aba97749565d04a55d9388--logo-free-car-logos.jpg",
-      "name": "Ford"
-      // },
-      // {
-      //   "image":"https://img.remediosdigitales.com/6bd085/p90385570_highres_the-new-bmw-communic/840_560.jpg",
-      //   "name":"BMW"
-      // },
-      // {
-      //   "image":"https://p4.wallpaperbetter.com/wallpaper/912/406/381/aventador-gallardo-lamborghini-logo-wallpaper-preview.jpg",
-      //   "name":"Lamboghini"
-      // },
-      // {
-      //   "image":"https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/Nissan-logo.svg/2378px-Nissan-logo.svg.png",
-      //   "name":"Nissan"
-      // },
-      // {
-      //   "image":"https://i.pinimg.com/originals/18/21/2f/18212f82cf5eac6a7d34e599b726fa7d.jpg",
-      //   "name":"Suzuki"
-      // },
-      // {
-      //   "image":"https://i.ytimg.com/vi/w2eGR2T3Sts/hqdefault.jpg",
-      //   "name":"Chevrolet"
-      // },
-      // {
-      //   "image":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQzRJqkg4C5gmg0916Av2Jspsa5k9H02e8ckw&usqp=CAU",
-      //   "name":"Kia"
-      // },
-      // {
-      // "image":"https://wallpaperaccess.com/full/349467.jpg",
-      // "name":"Honda"
-    }
-  ];
+  @override
+  State<ListFirebase> createState() => _ListFirebaseState();
+}
 
-   void openAlertDialog(BuildContext context, String info) {
-    AlertDialog alert =
-        AlertDialog(title: Text(info), content: Text(info), actions: [
-      TextButton(
-        onPressed: () => Navigator.pop(context),
-        child: const Text('OK'),
-      )
-    ]);
-    showDialog(context: context, builder: (BuildContext context) => alert);
-  }
+class _ListFirebaseState extends State<ListFirebase> {
+  final connection = new FirebaseConnection();
+
+  List<Registros> lista_registros = [];
 
   @override
   Widget build(BuildContext context) {
+    callDatabase();
     return Scaffold(
-      body: Center(
-        child: _createList(),
-      ),
-    );
-  }
-
-    Widget _createList() {
-    return ListView.builder(
-      itemCount: _cars.length,
-      itemBuilder: (BuildContext context, int index) {
-        return GestureDetector(
-          onTap: () {
-            openAlertDialog(context, _cars[index]['name']);
-          },
-          child: CustomCard(_cars[index]["name"], _cars[index]["image"]),
-        );
-      },
-    );
-  }
-}
-
-class CustomCard extends StatelessWidget {
-  final String name;
-  final String image;
-  const CustomCard(this.name, this.image, {Key? key}) : super(key: key);  
-
- @override
-  Widget build(BuildContext context) {
-    return Center(
-      child: Card(
-        elevation: 2,
-        color: Color.fromARGB(232, 218, 232, 251),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.all(Radius.circular(10)),
-        ),
-        child: SizedBox(
-          height: 60,
-          width: 360,
-          child: Container(
-            child: Row(
-              children: <Widget>[
-                Padding(padding: const EdgeInsets.only(left: 5)),
-                CircleAvatar(
-                  backgroundImage: NetworkImage(image),
-                ),
-                Padding(padding: const EdgeInsets.all(5)),
-                Text(
-                  name,
-                  style: const TextStyle(fontSize: 20),
-                ),
-              ],
-            ),
+       appBar: AppBar(
+          backgroundColor: Colors.transparent,
+          elevation: 0.0,
+          title: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              
+              InkWell(
+                onTap: () {
+                  print('tap');
+                },
+                child: Row(mainAxisSize: MainAxisSize.min, children: [
+                  Text(
+                    'List Contacts',
+                    style: Theme.of(context)
+                        .textTheme
+                        .headline6!
+                        .copyWith(fontWeight: FontWeight.bold),
+                  ),
+                  Icon(
+                    Icons.keyboard_arrow_down,
+                    color: Color.fromARGB(211, 16, 175, 4),
+                    size: 40,
+                  ),
+                  // Text('View all',
+                  // style: Theme.of(context)
+                  // .textTheme
+                  // .subtitle2!
+                  // .copyWith(color: Colors.black45),),
+                ]),
+              ),
+            ],
           ),
         ),
-      ),
-    );
+        body: ListView.builder(
+            itemCount: lista_registros.length,
+            itemBuilder: (context, index) {
+              MainAxisAlignment: MainAxisAlignment.start;
+              return Padding(
+                padding: const EdgeInsets.all(5.0),
+                child: Column(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(left: 10.0, right: 10.0),
+                      child: Row(
+                        children: [
+                          Expanded(
+                            child: SizedBox(
+                              child: Container(
+                                height: 70,
+                                //margin: EdgeInsets.symmetric(vertical: 2),
+                                 decoration: BoxDecoration(
+                                color: Colors.grey.shade100,
+                                borderRadius: BorderRadius.circular(10),
+                                boxShadow: [
+                                BoxShadow(
+                                color: Colors.grey.shade300,
+                                spreadRadius: 5,
+                                blurRadius: 5,
+                                  )
+                                ]),
+
+                                                            
+                                child: Column(
+                                  children: [
+                                    Row(
+                                      children: [
+                                      SizedBox(width: 25),
+                                        Padding(
+                                          padding: const EdgeInsets.all(8.0),
+                                          child: CircleAvatar(
+                                          backgroundImage:
+                                          Image.network(lista_registros[index].image!).image,
+                                          ),
+                                        ),
+                                        Padding(
+                                          padding: const EdgeInsets.all(14.0),
+                                          child: Column(
+                                            
+                                            crossAxisAlignment: CrossAxisAlignment.start,    
+                                            children: [                  
+                                               Text(lista_registros[index].nombre! + ' ' +
+                                                  lista_registros[index].apellido!,
+                                                  style: Theme.of(context)
+                                                  .textTheme
+                                                  .subtitle1!
+                                                  .copyWith(color: Colors.black,
+                                                  fontWeight: FontWeight.bold,
+                                                  )
+                                              ),
+
+                                       Text('Cel: '+ lista_registros[index].cel.toString(),
+                                                  style: Theme.of(context)
+                                                  .textTheme
+                                                  .subtitle2!
+                                                  .copyWith(color: Colors.black54,                                                  
+                                                  )
+                                                )
+                                            ],
+                                          ),
+                                        ),
+                                        Spacer(),
+                                        Icon(
+                                        Icons.keyboard_arrow_right,
+                                        color: Colors.black45,
+                                        size: 30,
+                                      ),
+                                      ]
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                 SizedBox(height: 10.0),
+                  ],
+                ),
+              );
+            }));
+  }
+
+  void callDatabase() async {
+    final response = await connection.getRegisters();
+    if (lista_registros.length == 0) {
+      setState(() {
+        lista_registros = response.registros!;
+      });
+    }
   }
 }

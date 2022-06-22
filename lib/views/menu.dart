@@ -20,7 +20,6 @@ class _MenuState extends State<Menu> {
     HomeScreen(),
     ListFirebase(),
     MyProfile(),
-    ListView1C(),
     ProfileScreen(),
   ];
 
@@ -60,11 +59,6 @@ class _MenuState extends State<Menu> {
             icon: Icon(Icons.school),
             label: 'Profile: Zuly',
             backgroundColor: Color.fromARGB(210, 9, 95, 194),
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.settings),
-            label: 'Settings',
-            backgroundColor: Color.fromARGB(255, 205, 49, 6),
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.badge),
