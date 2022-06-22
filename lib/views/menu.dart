@@ -48,7 +48,7 @@ class _MenuState extends State<Menu> {
           BottomNavigationBarItem(
             icon: Icon(Icons.business),
             label: 'Service',
-            backgroundColor: Color.fromARGB(255, 3, 92, 6),
+            backgroundColor: Color.fromARGB(255, 5, 3, 116),
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.school),

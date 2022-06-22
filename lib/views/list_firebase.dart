@@ -35,21 +35,22 @@ class _ListFirebaseState extends State<ListFirebase> {
                   builder: (BuildContext context) => AlertDialog(
                     title: Text((lista_registros[index].nombre! +
                         " "+ lista_registros[index].apellido!).toUpperCase() ),                    
-                    content: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        
-                        CircleAvatar(
-                            backgroundImage:
-                                Image.network(lista_registros[index].image!)
-                                    .image,
-                          ),                          
+                    content: Container(
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          
+                          Image(
+                          image:(Image.network((lista_registros[index].image!)).image),
+                        width: 200,
+                           ),                                                
 
-                        Text('\nCelular ${lista_registros[index].cel}'
-                            +"\n\n" +lista_registros[index].carro!.toString()
-                            +"\n\n" + lista_registros[index].servicio!.toString()
-                            ),
-                      ],
+                          Text('\nCelular ${lista_registros[index].cel}'
+                              +"\n\n" +lista_registros[index].carro!.toString()
+                              +"\n\n" + lista_registros[index].servicio!.toString()
+                              ),
+                        ],
+                      ),
                     ),
                         
                     actions: <Widget>[
