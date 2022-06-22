@@ -3,7 +3,7 @@ import 'package:flutter_application_2/views/home_screen.dart';
 import 'package:flutter_application_2/views/list_firebase.dart';
 import 'package:flutter_application_2/views/listview_1.dart';
 import 'package:flutter_application_2/views/profile.dart';
-
+import 'package:flutter_application_2/views/profileZetien.dart';
 
 class Menu extends StatefulWidget {
   const Menu({Key? key}) : super(key: key);
@@ -12,17 +12,15 @@ class Menu extends StatefulWidget {
 }
 
 class _MenuState extends State<Menu> {
-
   int _selectedIndex = 0;
 
-  static const TextStyle optionStyle = 
-  TextStyle(fontSize: 24, 
-  fontWeight: FontWeight.bold);
+  static const TextStyle optionStyle =
+      TextStyle(fontSize: 24, fontWeight: FontWeight.bold);
   static List<Widget> _widgetOptions = <Widget>[
     HomeScreen(),
     ListFirebase(),
     MyProfile(),
-    ListView1C(),
+    ProfileScreen(),
   ];
 
   void _onItemTapped(int index) {
@@ -37,7 +35,10 @@ class _MenuState extends State<Menu> {
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0.0,
-        title: const Text('Aplication Mobile', style: TextStyle(color: Colors.blue),),
+        title: const Text(
+          'Aplication Mobile',
+          style: TextStyle(color: Colors.blue),
+        ),
       ),
       body: Center(
         child: _widgetOptions.elementAt(_selectedIndex),
@@ -56,13 +57,13 @@ class _MenuState extends State<Menu> {
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.school),
-            label: 'Profile',
+            label: 'Profile: Zuly',
             backgroundColor: Color.fromARGB(210, 9, 95, 194),
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.settings),
-            label: 'Settings',
-            backgroundColor: Color.fromARGB(255, 205, 49, 6),
+            icon: Icon(Icons.badge),
+            label: 'Profile: Zetien',
+            backgroundColor: Color.fromARGB(255, 76, 51, 187),
           ),
         ],
         currentIndex: _selectedIndex,
@@ -72,5 +73,3 @@ class _MenuState extends State<Menu> {
     );
   }
 }
-
-
