@@ -42,8 +42,8 @@ class _ListFirebaseState extends State<ListFirebase> {
 
                   Icon(
                     Icons.keyboard_arrow_down,
-                    color: Color.fromARGB(211, 16, 175, 4),
-                    size: 40,
+                    color: Color.fromARGB(210, 33, 4, 175),
+                    size: 30,
                   ),
 
                   // Text('View all',

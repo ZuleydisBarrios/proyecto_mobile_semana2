@@ -36,8 +36,8 @@ class _MenuState extends State<Menu> {
         backgroundColor: Colors.transparent,
         elevation: 0.0,
         title: const Text(
-          'Aplication Mobile',
-          style: TextStyle(color: Colors.blue),
+          'Videogames ZZ',
+          style: TextStyle(color: Color.fromARGB(255, 3, 39, 146)),
         ),
       ),
       body: Center(
