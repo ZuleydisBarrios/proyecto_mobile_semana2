@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 class HomeScreen extends StatelessWidget {
   final List<String> bannerList = <String>[
-    'https://i.blogs.es/8df7b0/71aapizi3is/1366_2000.jpeg', 
+    'https://i.blogs.es/8df7b0/71aapizi3is/1366_2000.jpeg',
     'https://cdn.hobbyconsolas.com/sites/navi.axelspringer.es/public/styles/1200/public/media/image/2014/02/284953-repasando-mejores-free-play-ii.jpg?itok=KBlZ7BdG',
     'https://elcomercio.pe/resizer/c2hemWsylgAXZ0gQA6ULYJ3ODa0=/980x0/smart/filters:format(jpeg):quality(75)/arc-anglerfish-arc2-prod-elcomercio.s3.amazonaws.com/public/5IZHXX2FORFG3CSEU6BGNNU24M.jpg',
     'https://as01.epimg.net/meristation/imagenes/2019/09/27/analisis/1569537073_291729_1569571560_miniatura_normal.jpg',
@@ -111,24 +111,23 @@ class HomeScreen extends StatelessWidget {
               Container(
                 height: 115,
                 child: ListView.builder(
-                    //shrinkWrap: true,
                     scrollDirection: Axis.horizontal,
-                    //physics: NeverScrollableScrollPhysics(),
                     itemCount: listCards.length,
                     itemBuilder: (context, index) {
-                      return CategoryCard(categoryModel: listCards[index],);
+                      return CategoryCard(
+                        categoryModel: listCards[index],
+                      );
                     }),
               ),
-                SizedBox(height:20),
-                 Text('The videogames most popular',
-                 textAlign: TextAlign.center,
-                 style: Theme.of(context)
+              SizedBox(height: 20),
+              Text('The videogames most popular',
+                  textAlign: TextAlign.center,
+                  style: Theme.of(context)
                       .textTheme
                       .headline6!
-                      .copyWith(color: Color.fromARGB(255, 8, 6, 10))
-                 ),
-                for (int i= 0; i<bannerList.length; i++)...{
-                    Container(
+                      .copyWith(color: Color.fromARGB(255, 8, 6, 10))),
+              for (int i = 0; i < bannerList.length; i++) ...{
+                Container(
                   margin: EdgeInsets.symmetric(vertical: 15),
                   decoration: BoxDecoration(
                       color: Colors.grey.shade100,
@@ -182,30 +181,30 @@ class HomeScreen extends StatelessWidget {
                                     .subtitle1!
                                     .copyWith(color: Colors.black45)),
                             Spacer(),
-                             Column(
-                               children: [
-                                 Text('avaliable on:',
+                            Column(
+                              children: [
+                                Text('avaliable on:',
                                     style: Theme.of(context)
                                         .textTheme
                                         .bodySmall!
                                         .copyWith(color: Colors.black45)),
-                                Image.asset('assets/videojuegos/logoplaystore.png',
-                                height: 25,
-                                width: 25,)
-                               ],
-                             ),
-                            
+                                Image.asset(
+                                  'assets/videojuegos/logoplaystore.png',
+                                  height: 25,
+                                  width: 25,
+                                )
+                              ],
+                            ),
                           ],
                         ),
                       )
                     ],
                   ),
                 )
-                }
+              }
             ]),
           ),
         ));
-
   }
 }
 
@@ -218,19 +217,17 @@ class CategoryCard extends StatelessWidget {
     return Column(
       children: [
         Container(
-          padding: EdgeInsets.all(17),
-            margin: EdgeInsets.only(
-                top: 5, bottom: 2, right: 5, left: 8),
+            padding: EdgeInsets.all(17),
+            margin: EdgeInsets.only(top: 5, bottom: 2, right: 5, left: 8),
             height: 70,
             width: 70,
-            decoration: BoxDecoration(        
+            decoration: BoxDecoration(
               color: Color.fromARGB(255, 160, 219, 250).withOpacity(0.2),
               borderRadius: BorderRadius.circular(15),
-           ),
+            ),
             child: Image.asset(
               categoryModel.imageUrl,
             )),
-
         Text(categoryModel.title,
             style: Theme.of(context)
                 .textTheme
@@ -240,8 +237,9 @@ class CategoryCard extends StatelessWidget {
     );
   }
 }
-class CategoryModel{
-  String imageUrl; 
+
+class CategoryModel {
+  String imageUrl;
   String title;
   CategoryModel(this.imageUrl, this.title);
 }
@@ -249,19 +247,22 @@ class CategoryModel{
 List<CategoryModel> listCards = [
   CategoryModel(
     'assets/videojuegos/diosdelaguerra.jpg',
-    'Action',),
+    'Action',
+  ),
   CategoryModel(
     'assets/videojuegos/lol.jpg',
-    'MMORPG',),
+    'MMORPG',
+  ),
   CategoryModel(
     'assets/videojuegos/gta.jpg',
-    'Racing',),
+    'Racing',
+  ),
   CategoryModel(
     'assets/videojuegos/horizont.jpeg',
-    'Adventure',),
+    'Adventure',
+  ),
   CategoryModel(
     'assets/videojuegos/callofdutty.jpeg',
-    'FPS',),
-
+    'FPS',
+  ),
 ];
-

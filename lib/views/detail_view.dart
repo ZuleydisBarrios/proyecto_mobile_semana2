@@ -8,15 +8,11 @@ class DetailView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color.fromARGB(255, 23, 7, 63),        
-        
- title: Text(
+        backgroundColor: Color.fromARGB(255, 23, 7, 63),
+        title: Text(
           registro.nombre + " " + registro.apellido,
-          style: Theme.of(context)
-                      .textTheme
-                      .headlineSmall!
-                      .copyWith(color: Color.fromARGB(255, 255, 255, 255),
-
+          style: Theme.of(context).textTheme.headlineSmall!.copyWith(
+                color: Color.fromARGB(255, 255, 255, 255),
               ),
         ),
       ),
@@ -24,25 +20,6 @@ class DetailView extends StatelessWidget {
         padding: const EdgeInsets.all(15.0),
         child: Column(
           children: [
-            // Container(
-            //   margin: EdgeInsets.symmetric(vertical: 15),
-            //   decoration: BoxDecoration(
-            //       color: Colors.blue.shade50,
-            //       borderRadius: BorderRadius.circular(10),
-            //       boxShadow: [
-            //         BoxShadow(
-            //           color:  Colors.blue.shade50,
-            //           spreadRadius: 5,
-            //           //blurRadius: 5,
-            //         )
-            //       ]),
-            //   child: Text('Detalle de Contacto',
-            //       style: Theme.of(context)
-            //                   .textTheme
-            //                   .headlineSmall!
-            //                   .copyWith(color: Color.fromARGB(255, 57, 60, 253),
-            //           ), ),
-            // ),
             Container(
               margin: EdgeInsets.symmetric(vertical: 15),
               decoration: BoxDecoration(
@@ -98,25 +75,27 @@ class DetailView extends StatelessWidget {
                             height: 15,
                           ),
                           Container(
-                                decoration: BoxDecoration(
-                                color: Color.fromARGB(78, 192, 208, 251),
-                                borderRadius: BorderRadius.circular(10),
-                               
-                               ),
+                            decoration: BoxDecoration(
+                              color: Color.fromARGB(78, 192, 208, 251),
+                              borderRadius: BorderRadius.circular(10),
+                            ),
                             child: Padding(
                               padding: const EdgeInsets.all(8.0),
                               child: Row(
                                 children: [
-                                  
                                   Text(
                                     'Detalle del Vehiculo',
                                     style: Theme.of(context)
                                         .textTheme
                                         .titleLarge!
-                                        .copyWith(color: Color.fromARGB(255, 26, 0, 176)),
+                                        .copyWith(
+                                            color: Color.fromARGB(
+                                                255, 26, 0, 176)),
                                   ),
                                   Spacer(),
-                                  Icon(Icons.arrow_drop_down, color: Color.fromARGB(255, 255, 255, 255)),
+                                  Icon(Icons.arrow_drop_down,
+                                      color:
+                                          Color.fromARGB(255, 255, 255, 255)),
                                 ],
                               ),
                             ),
@@ -132,7 +111,8 @@ class DetailView extends StatelessWidget {
                                       borderRadius: BorderRadius.circular(10),
                                       boxShadow: [
                                         BoxShadow(
-                                          color: Color.fromARGB(255, 194, 196, 200),
+                                          color: Color.fromARGB(
+                                              255, 194, 196, 200),
                                           //spreadRadius: 5,
                                           blurRadius: 5,
                                         )
@@ -148,14 +128,13 @@ class DetailView extends StatelessWidget {
                                 ),
                                 Spacer(),
                                 Container(
-                                   margin: EdgeInsets.symmetric(vertical: 15),
+                                  margin: EdgeInsets.symmetric(vertical: 15),
                                   decoration: BoxDecoration(
                                       color: Colors.grey.shade100,
                                       borderRadius: BorderRadius.circular(10),
                                       boxShadow: [
                                         BoxShadow(
                                           color: Colors.grey.shade300,
-                                          //spreadRadius: 5,
                                           blurRadius: 5,
                                         )
                                       ]),
